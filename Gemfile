@@ -33,6 +33,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'factory_bot_rails', '~> 6.2'
+  gem 'rubocop-faker', '~> 0.2.0'
 end
 
 group :development do
