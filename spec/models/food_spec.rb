@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Food, type: :model do
   # Association test
-  # ensure an item record belongs to a single meal record
+  # ensure an food record belongs to a single meal record
   it { should belong_to(:meal) }
   # Validation test
   # ensure column name and calories is present before saving
