@@ -2,13 +2,13 @@ class MealsController < ApplicationController
   before_action :set_meal, only: %i[show update destroy]
   # GET /meals
   def index
-    @meals = Meal.all
+    @meals = current_user.meals
     json_response(@meals)
   end
 
   # POST /meals
   def create
-    @meal = Meal.create!(meal_params)
+    @meal = current_user.meals.create!(meal_params)
     json_response(@meal, :created)
   end
 
@@ -33,7 +33,7 @@ class MealsController < ApplicationController
 
   def meal_params
     # whitelist params
-    params.permit(:title, :created_by)
+    params.permit(:title)
   end
 
   def set_meal

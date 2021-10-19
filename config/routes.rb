@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   resources :meals do
     resources :foods
   end
+
+  post 'auth/login', to: 'authentication#authenticate'
+  post 'signup', to: 'users#create'
 end

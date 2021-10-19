@@ -2,14 +2,16 @@ require 'rails_helper'
 
 RSpec.describe "Foods", type: :request do
   # Initialize the test data
-  let!(:meal) { create(:meal) }
+  let(:user) { create(:user) }
+  let!(:meal) { create(:meal, user_id: user.id) }
   let!(:foods) { create_list(:food, 20, meal_id: meal.id) }
   let(:meal_id) { meal.id }
   let(:id) { foods.first.id }
+  let(:headers) { valid_headers }
 
   # Test suite for GET /meals/:meal_id/foods
   describe 'GET /meals/:meal_id/foods' do
-    before { get "/meals/#{meal_id}/foods" }
+    before { get "/meals/#{meal_id}/foods", params: {}, headers: headers }
     context 'when meal exists' do
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
@@ -35,7 +37,7 @@ RSpec.describe "Foods", type: :request do
 
   # Test suite for GET /meals/:meal_id/foods/:id
   describe 'GET /meals/:meal_id/foods/:id' do
-    before { get "/meals/#{meal_id}/foods/#{id}" }
+    before { get "/meals/#{meal_id}/foods/#{id}", params: {}, headers: headers }
 
     context 'when meal food exists' do
       it 'returns status code 200' do
@@ -62,10 +64,10 @@ RSpec.describe "Foods", type: :request do
 
   # Test suite for PUT /meals/:meal_id/foods
   describe 'POST /meals/:meal_id/foods' do
-    let(:valid_attributes) { { name: 'Fish sticks', calories: 111 } }
+    let(:valid_attributes) { { name: 'Fish sticks', calories: 111 }.to_json }
 
     context 'when request attributes are valid' do
-      before { post "/meals/#{meal_id}/foods", params: valid_attributes }
+      before { post "/meals/#{meal_id}/foods", params: valid_attributes, headers: headers }
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
@@ -73,7 +75,7 @@ RSpec.describe "Foods", type: :request do
     end
 
     context 'when an invalid request' do
-      before { post "/meals/#{meal_id}/foods", params: {} }
+      before { post "/meals/#{meal_id}/foods", params: {}, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -87,9 +89,9 @@ RSpec.describe "Foods", type: :request do
 
   # Test suite for PUT /meals/:meal_id/foods/:id
   describe 'PUT /meals/:meal_id/foods/:id' do
-    let(:valid_attributes) { { name: 'Fish' } }
+    let(:valid_attributes) { { name: 'Fish' }.to_json }
 
-    before { put "/meals/#{meal_id}/foods/#{id}", params: valid_attributes }
+    before { put "/meals/#{meal_id}/foods/#{id}", params: valid_attributes, headers: headers }
 
     context 'when food exists' do
       it 'returns status code 204' do
@@ -117,7 +119,7 @@ RSpec.describe "Foods", type: :request do
 
   # Test suite for DELETE /meals/:id
   describe 'DELETE /meals/:id' do
-    before { delete "/meals/#{meal_id}/foods/#{id}" }
+    before { delete "/meals/#{meal_id}/foods/#{id}", params: {}, headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
