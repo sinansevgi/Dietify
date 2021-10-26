@@ -3,6 +3,11 @@
 Dietify - Calorie counting for weight management shouldn't be hard. Dietify helps you to keep track of your calorie intake.
 This is the api backend for the Dietify application. [Click here](https://github.com/sinansevgi/dietifyreact/tree/react-app) to see the frontend project.
 
+
+## Live Demo Link
+
+You can use [this link](https://dietify-react.netlify.app/) to access the demo version of this app.
+
 ## Built With
 
 - Ruby 3.0.2
