@@ -1,3 +1,4 @@
+module V1
 class FoodsController < ApplicationController
   before_action :set_meal
   before_action :set_meal_food, only: %i[show update destroy]
@@ -43,4 +44,5 @@ class FoodsController < ApplicationController
   def set_meal_food
     @food = @meal.foods.find_by!(id: params[:id]) if @meal
   end
+end
 end

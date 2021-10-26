@@ -54,7 +54,7 @@ RSpec.describe "Meals", type: :request do
   describe 'POST /meals' do
     # valid payload
     let(:valid_attributes) do
-      {  title: 'Breakfast', user_id: user.id }.to_json
+      { title: 'Breakfast', user_id: user.id }.to_json
     end
 
     context 'when the request is valid' do
