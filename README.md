@@ -1,7 +1,7 @@
 # Dietify Backend
 
 Dietify - Calorie counting for weight management shouldn't be hard. Dietify helps you to keep track of your calorie intake.
-This is an api backend for the the the Dietify application. 
+This is the api backend for the Dietify application. 
 
 ## Built With
 
