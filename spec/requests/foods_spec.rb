@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Foods", type: :request do
+RSpec.describe 'Foods', type: :request do
   # Initialize the test data
   let(:user) { create(:user) }
   let!(:meal) { create(:meal, user_id: user.id) }

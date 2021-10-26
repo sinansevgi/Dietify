@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Meals", type: :request do
+RSpec.describe 'Meals', type: :request do
   let(:user) { create(:user) }
   let!(:meals) { create_list(:meal, 10, user_id: user.id) }
   let(:meal_id) { meals.first.id }

@@ -5,8 +5,8 @@ class Meal < ApplicationRecord
   validates_presence_of :title
 
   scope :latest_meals, lambda { |user_id|
-                         where(user_id: user_id)
-                           .where('created_at >= ? ', (Date.today - 30.days).beginning_of_day)
+    where(user_id: user_id)
+      .where('created_at >= ? ', (Date.today - 30.days).beginning_of_day)
   }
   def daily
     created_at.strftime('%Y/%m/%d')
@@ -15,5 +15,4 @@ class Meal < ApplicationRecord
   def total_calories
     foods.sum(:calories)
   end
-
 end
