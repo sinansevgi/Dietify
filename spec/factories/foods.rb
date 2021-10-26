@@ -1,3 +1,5 @@
+# rubocop:disable Lint/EmptyBlock
+
 FactoryBot.define do
   factory :food do
     name { Faker::Food.dish }
@@ -5,3 +7,4 @@ FactoryBot.define do
     meal_id {}
   end
 end
+# rubocop:enable Lint/EmptyBlock
