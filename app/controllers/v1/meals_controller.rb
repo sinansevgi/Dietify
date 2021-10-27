@@ -9,7 +9,7 @@ module V1
 
     # POST /meals
     def create
-      current_user.meals.create!(meal_params)
+      @meal = current_user.meals.create!(meal_params)
       json_response(@meal, :created)
     end
 
